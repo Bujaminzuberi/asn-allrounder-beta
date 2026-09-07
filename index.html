@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ASN Allrounder (BETA)</title>
+<!-- ===== PWA / "Zum Startbildschirm hinzufügen" ===== -->
+<!-- Android / Chrome: liest das Manifest für Name, Icon und Standalone-Modus -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#21262B">
+<!-- iOS / Safari: eigene Tags, da Safari das Manifest nur teilweise nutzt -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ASN Allrounder BETA">
+<link rel="apple-touch-icon" sizes="180x180" href="icons/icon-180.png">
+<link rel="apple-touch-icon" sizes="167x167" href="icons/icon-167.png">
+<link rel="apple-touch-icon" sizes="152x152" href="icons/icon-152.png">
+<link rel="apple-touch-icon" sizes="120x120" href="icons/icon-120.png">
+<!-- Browser-Tab-Icon (Favicon) -->
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16.png">
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    background: #EFEEE8; /* gleiche Hintergrundfarbe wie die Live-App, damit es beim Laden nicht "blitzt" */
+  }
+  /* BETA-Banner-Style auskommentiert (nicht geloescht) - bei Bedarf die
+     Kommentarzeichen am Anfang und Ende dieses Blocks wieder entfernen,
+     um das Banner erneut sichtbar zu machen. */
+  /*
+  #beta-badge {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    background: #B8433D;
+    color: #fff;
+    text-align: center;
+    font-family: system-ui, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 4px 0;
+  }
+  */
+  iframe {
+    display: block;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh; /* korrekte volle Höhe auf Handys, auch mit Adressleiste */
+    border: none;
+    /* margin-top: 22px; War Platz für das BETA-Banner oben - zusammen mit dem
+       Banner selbst wieder aktivieren, falls dieses zurückkommen soll. */
+  }
+</style>
+</head>
+<body>
+  <!-- BETA-Banner auskommentiert (nicht gelöscht) - bei Bedarf die
+       Kommentarzeichen davor/danach entfernen, um es wieder einzublenden:
+  <div id="beta-badge">⚠ TESTVERSION – nicht die echten Daten der Mitarbeiter verwenden</div>
+  -->
+  <!--
+    WICHTIG: Hier unten bei "src" die Apps-Script-Web-App-URL DEINES TEST-PROJEKTS
+    eintragen (nicht die der Live-App!). Die findest du in deinem Test-Apps-Script-
+    Projekt unter: Bereitstellen -> Bereitstellungen verwalten -> Web-App-URL.
+    Es ist die URL, die auf /exec endet.
+  -->
+  <iframe
+    src="https://script.google.com/macros/s/AKfycbxsCcj5xB3j0RrzNrqyJldNbsvbRS0Zsx7f1euPJafk9Z8gVnN1foYXGk5yhfYRoLBupg/exec"
+    title="ASN Allrounder BETA"
+    allow="clipboard-write"
+  ></iframe>
+  <script>
+    // Die App (im iframe) sendet diese Nachricht, wenn der Nutzer im
+    // "Neue Version verfügbar"-Banner auf "Aktualisieren" klickt. Ein Reload
+    // innerhalb des iframes selbst kann bei Apps-Script-URLs zu einem leeren/
+    // weissen Ergebnis führen (wechselnder Sandbox-Präfix), daher wird hier die
+    // gesamte umschliessende Seite neu geladen - das entspricht genau dem
+    // Schliessen und erneuten Öffnen der App.
+    window.addEventListener('message', function(event) {
+      if (event.data && event.data.asnAllrounderReload) {
+        location.reload();
+      }
+    });
+  </script>
+</body>
+</html>
