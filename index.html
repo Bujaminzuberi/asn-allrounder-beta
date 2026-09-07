@@ -4,13 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>ASN Allrounder (BETA)</title>
-
 <!-- ===== PWA / "Zum Startbildschirm hinzufügen" ===== -->
-
 <!-- Android / Chrome: liest das Manifest für Name, Icon und Standalone-Modus -->
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#B8433D">
-
 <!-- iOS / Safari: eigene Tags, da Safari das Manifest nur teilweise nutzt -->
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -19,11 +16,9 @@
 <link rel="apple-touch-icon" sizes="167x167" href="icons/icon-167.png">
 <link rel="apple-touch-icon" sizes="152x152" href="icons/icon-152.png">
 <link rel="apple-touch-icon" sizes="120x120" href="icons/icon-120.png">
-
 <!-- Browser-Tab-Icon (Favicon) -->
 <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16.png">
-
 <style>
   html, body {
     margin: 0;
@@ -32,6 +27,10 @@
     overflow: hidden;
     background: #21262B; /* dunkler statt hell, damit BETA optisch sofort auffällt */
   }
+  /* BETA-Banner-Style auskommentiert (nicht geloescht) - bei Bedarf die
+     Kommentarzeichen am Anfang und Ende dieses Blocks wieder entfernen,
+     um das Banner erneut sichtbar zu machen. */
+  /*
   #beta-badge {
     position: fixed;
     top: 0;
@@ -47,18 +46,23 @@
     letter-spacing: 0.5px;
     padding: 4px 0;
   }
+  */
   iframe {
     display: block;
     width: 100%;
     height: 100vh;
     height: 100dvh; /* korrekte volle Höhe auf Handys, auch mit Adressleiste */
     border: none;
-    margin-top: 22px; /* Platz für das BETA-Banner oben */
+    /* margin-top: 22px; War Platz für das BETA-Banner oben - zusammen mit dem
+       Banner selbst wieder aktivieren, falls dieses zurückkommen soll. */
   }
 </style>
 </head>
 <body>
+  <!-- BETA-Banner auskommentiert (nicht gelöscht) - bei Bedarf die
+       Kommentarzeichen davor/danach entfernen, um es wieder einzublenden:
   <div id="beta-badge">⚠ TESTVERSION – nicht die echten Daten der Mitarbeiter verwenden</div>
+  -->
   <!--
     WICHTIG: Hier unten bei "src" die Apps-Script-Web-App-URL DEINES TEST-PROJEKTS
     eintragen (nicht die der Live-App!). Die findest du in deinem Test-Apps-Script-
@@ -66,7 +70,7 @@
     Es ist die URL, die auf /exec endet.
   -->
   <iframe
-    src=https://script.google.com/macros/s/AKfycbxsCcj5xB3j0RrzNrqyJldNbsvbRS0Zsx7f1euPJafk9Z8gVnN1foYXGk5yhfYRoLBupg/exec
+    src="https://script.google.com/macros/s/AKfycbxsCcj5xB3j0RrzNrqyJldNbsvbRS0Zsx7f1euPJafk9Z8gVnN1foYXGk5yhfYRoLBupg/exec"
     title="ASN Allrounder BETA"
     allow="clipboard-write"
   ></iframe>
