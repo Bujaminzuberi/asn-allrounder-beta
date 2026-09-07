@@ -1,6 +1,6 @@
 {
-  "name": "ASN Allrounder BETA",
-  "short_name": "ASN Allrounder B",
+  "name": "ASN Allrounder ",
+  "short_name": "ASN Allrounder ",
   "description": "Testversion von ASN Allrounder - nicht für den produktiven Einsatz",
   "start_url": "./index.html",
   "scope": "./",
